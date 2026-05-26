@@ -5,6 +5,10 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+# ✅ ADD THIS - Grants write permissions to the token
+permissions:
+  contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
