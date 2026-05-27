@@ -15,25 +15,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       
-      - name: Install lftp
-        run: sudo apt-get update && sudo apt-get install -y lftp
+      - name: Install ncftp
+        run: sudo apt-get update && sudo apt-get install -y ncftp
       
-      - name: Deploy via lftp
+      - name: Deploy via ncftp
         run: |
-          lftp -c "
-          set ftp:ssl-allow no
-          set ftp:passive-mode yes
-          set mirror:use-pget-n 3
-          set cmd:fail-exit off
-          open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOST }}
-          mirror -R --verbose --parallel=4 --exclude-glob .git/ --exclude-glob .github/ --no-perms --ignore-time ./ ${{ secrets.FTP_TARGET_FOLDER }}
-          quit
-          "
+          ncftpput -R -v -u ${{ secrets.FTP_USERNAME }} -p ${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOST }} ${{ secrets.FTP_TARGET_FOLDER }} .
         env:
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
           FTP_HOST: ${{ secrets.FTP_HOST }}
           FTP_TARGET_FOLDER: ${{ secrets.FTP_TARGET_FOLDER }}
       
-      - name: Verify deployment
-        run: echo "✅ Deployment completed! Files have been uploaded to InfinityFree."
+      - name: Deployment complete
+        run: echo "✅ Deployment to InfinityFree completed!"
