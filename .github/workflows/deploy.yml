@@ -20,7 +20,7 @@ jobs:
 
       - name: Deploy via ncftp
         run: |
-          ncftpput -R -v -u ${{ secrets.FTP_USERNAME }} -p ${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOST }} ${{ secrets.FTP_TARGET_FOLDER }} . || true
+          ncftpput -R -v -NC -u ${{ secrets.FTP_USERNAME }} -p ${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOST }} ${{ secrets.FTP_TARGET_FOLDER }} . || true
         env:
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
