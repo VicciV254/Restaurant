@@ -1,13 +1,17 @@
 <?php
 // dbconnect.php - Database configuration only (NO SESSIONS)
 
-// Database connection
-$conn = mysqli_connect('sql302.infinityfree.com
-','if0_42022594','Infinity056321','if0_42022594_restaurant_db');
+// Database connection for AwardSpace
+$host = "fdb1032.awardspace.net";      // Your database host
+$user = "4762922_restaurant";           // Your database username (adjust if different)
+$pass = "0OiZeF/17Nx:54}T";            // Your database password
+$db   = "4762922_restaurant";           // Your database name (adjust if different)
+
+$conn = mysqli_connect($host, $user, $pass, $db);
 
 // Check connection
 if(!$conn){
-    die('Connection error: ' .mysqli_connect_error());
+    die('Connection error: ' . mysqli_connect_error());
 }
 
 // Set timezone
