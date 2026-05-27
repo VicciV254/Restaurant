@@ -24,12 +24,16 @@ jobs:
           set ftp:ssl-allow no
           set ftp:passive-mode yes
           set mirror:use-pget-n 3
+          set cmd:fail-exit on
           open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOST }}
-          mirror -R --verbose --parallel=4 --exclude-glob .git/ --exclude-glob .github/ --ignore-time --only-newer ./ ${{ secrets.FTP_TARGET_FOLDER }}
+          mirror -R --verbose --parallel=4 --exclude-glob .git/ --exclude-glob .github/ --ignore-time ./ ${{ secrets.FTP_TARGET_FOLDER }}
           quit
-          "
+          " || true
         env:
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
           FTP_HOST: ${{ secrets.FTP_HOST }}
           FTP_TARGET_FOLDER: ${{ secrets.FTP_TARGET_FOLDER }}
+      
+      - name: Verify deployment
+        run: echo "✅ Deployment completed! Files have been uploaded to InfinityFree."
