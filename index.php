@@ -1,4 +1,1 @@
-<?php
-header("Location: /customer/");
-exit();
-?>
+<?php header("Location: customer/"); ?>
