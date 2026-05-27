@@ -1,1 +1,13 @@
 Options -Indexes
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # If the request is not to an existing file or directory
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  
+  # Rewrite to index.php
+  RewriteRule ^(.*)$ index.php [L]
+</IfModule>
