@@ -1,12 +1,16 @@
 <?php
 // dbconnect.php - Database configuration only (NO SESSIONS)
 
-// Database connection
-$conn = mysqli_connect('localhost','if0_42022594','Infinity056321','if0_42022594_restaurant_db');
+// Connect without database first
+$conn = mysqli_connect('sql302.infinityfree.com', 'if0_42022594', 'Infinity056321');
 
-// Check connection
-if(!$conn){
-    die('Connection error: ' .mysqli_connect_error());
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// Then select the database
+if (!mysqli_select_db($conn, 'if0_42022594_restaurant_db')) {
+    die("Database selection failed: " . mysqli_error($conn));
 }
 
 // Set timezone
