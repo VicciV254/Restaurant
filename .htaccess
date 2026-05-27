@@ -4,10 +4,13 @@ Options -Indexes
   RewriteEngine On
   RewriteBase /
   
+  # Admin rule - must come BEFORE the general rule
+  RewriteRule ^admin(/.*)?$ admin/index.php [L]
+  
   # If the request is not to an existing file or directory
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   
-  # Rewrite to index.php
-  RewriteRule ^(.*)$ index.php [L]
+  # Rewrite to customer/index.php
+  RewriteRule ^(.*)$ customer/index.php [L]
 </IfModule>
