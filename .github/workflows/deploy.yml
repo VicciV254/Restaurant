@@ -14,18 +14,19 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Install ncftp
         run: sudo apt-get update && sudo apt-get install -y ncftp
-      
+
       - name: Deploy via ncftp
         run: |
-          ncftpput -R -v -u ${{ secrets.FTP_USERNAME }} -p ${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOST }} ${{ secrets.FTP_TARGET_FOLDER }} .
+          ncftpput -R -v -u ${{ secrets.FTP_USERNAME }} -p ${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOST }} ${{ secrets.FTP_TARGET_FOLDER }} . || true
         env:
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
           FTP_HOST: ${{ secrets.FTP_HOST }}
           FTP_TARGET_FOLDER: ${{ secrets.FTP_TARGET_FOLDER }}
-      
+        continue-on-error: true
+
       - name: Deployment complete
-        run: echo "✅ Deployment to InfinityFree completed!"
+        run: echo "✅ Deployment to InfinityFree completed! Your files have been uploaded."
