@@ -2,7 +2,7 @@
 // dbconnect.php - Database configuration only (NO SESSIONS)
 
 // Database connection
-$conn = mysqli_connect('sql302.infinityfree.com:3306','if0_42022594','Infinity056321','if0_42022594_restaurant_db');
+$conn = mysqli_connect('localhost','if0_42022594','Infinity056321','if0_42022594_restaurant_db');
 
 // Check connection
 if(!$conn){
