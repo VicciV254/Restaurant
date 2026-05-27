@@ -23,8 +23,9 @@ jobs:
           lftp -c "
           set ftp:ssl-allow no
           set ftp:passive-mode yes
+          set mirror:use-pget-n 3
           open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOST }}
-          mirror -R --verbose --parallel=4 --exclude-glob .git/ --exclude-glob .github/ --no-perms ./ ${{ secrets.FTP_TARGET_FOLDER }}
+          mirror -R --verbose --parallel=4 --exclude-glob .git/ --exclude-glob .github/ --ignore-time --only-newer ./ ${{ secrets.FTP_TARGET_FOLDER }}
           quit
           "
         env:
