@@ -1,29 +1,25 @@
 <?php
-// dbconnect.php - Database configuration only (NO SESSIONS)
-
-// Database connection for AwardSpace
-$host = "fdb1032.awardspace.net";      // Your database host
-$user = "4762922_restaurant";           // Your database username (adjust if different)
-$pass = "0OiZeF/17Nx:54}T";            // Your database password
-$db   = "4762922_restaurant";           // Your database name (adjust if different)
+// Database configuration for InfinityFree
+$host = "sql307.infinityfree.com";      // Your MySQL hostname (from vPanel)
+$user = "if0_42039279";                    // Your database username
+$pass = "1vns8PJ59ChoC4j";        // Your database password
+$db   = "if0_42039279_restaurant_db";      // Your database name
 
 $conn = mysqli_connect($host, $user, $pass, $db);
 
-// Check connection
-if(!$conn){
-    die('Connection error: ' . mysqli_connect_error());
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
 
 // Set timezone
 date_default_timezone_set('Africa/Nairobi');
 
-// Function to sanitize input
+// Your existing functions (sanitize, generateTrackingCode)
 function sanitize($data) {
     global $conn;
     return mysqli_real_escape_string($conn, htmlspecialchars(strip_tags($data)));
 }
 
-// Function to generate tracking code
 function generateTrackingCode($conn) {
     $query = "SELECT MAX(id) as last_id FROM orders";
     $result = mysqli_query($conn, $query);
