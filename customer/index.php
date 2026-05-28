@@ -79,14 +79,30 @@ $featured_items = array_slice($featured_items, 0, 6);
             overflow: hidden;
         }
         
-        .hero-video {
+        .hero-video-wrapper {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
             z-index: 1;
+            pointer-events: none;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+        }
+        
+        .hero-video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
         }
         
         .hero-overlay {
@@ -181,14 +197,30 @@ $featured_items = array_slice($featured_items, 0, 6);
             transform: translateY(-10px);
         }
         
-        .info-video {
+        .info-video-wrapper {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
             z-index: 1;
+            pointer-events: none;
+        }
+        
+        .info-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+        }
+        
+        .info-video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
         }
         
         .info-overlay {
@@ -451,10 +483,16 @@ $featured_items = array_slice($featured_items, 0, 6);
 
 <!-- Hero Section with Video -->
 <section class="hero-section">
-    <video class="hero-video" autoplay loop muted playsinline>
-        <source src="../vid/home.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    <div class="hero-video-wrapper">
+        <iframe class="hero-video"
+            src="https://www.youtube.com/embed/H4msDNMapq0?autoplay=1&mute=1&loop=1&playlist=H4msDNMapq0&controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3"
+            title="Joy Eateries Home Video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+        </iframe>
+    </div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
         <div class="hero-logo">
@@ -477,10 +515,16 @@ $featured_items = array_slice($featured_items, 0, 6);
             <!-- Our Story Box -->
             <div class="col s12 m6">
                 <div class="info-card">
-                    <video class="info-video" autoplay loop muted playsinline>
-                        <source src="../vid/story.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <div class="info-video-wrapper">
+                        <iframe class="info-video"
+                            src="https://www.youtube.com/embed/yNhX7lJeHEs?autoplay=1&mute=1&loop=1&playlist=yNhX7lJeHEs&controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3"
+                            title="Joy Eateries Story Video"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
                     <div class="info-overlay"></div>
                     <div class="info-content">
                         <h3>Our Story</h3>
@@ -493,10 +537,16 @@ $featured_items = array_slice($featured_items, 0, 6);
             <!-- Our Mission Box -->
             <div class="col s12 m6">
                 <div class="info-card">
-                    <video class="info-video" autoplay loop muted playsinline>
-                        <source src="../vid/mission.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <div class="info-video-wrapper">
+                        <iframe class="info-video"
+                            src="https://www.youtube.com/embed/-s2TfH12yDw?autoplay=1&mute=1&loop=1&playlist=-s2TfH12yDw&controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3"
+                            title="Joy Eateries Mission Video"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
                     <div class="info-overlay"></div>
                     <div class="info-content">
                         <h3>Our Mission</h3>
