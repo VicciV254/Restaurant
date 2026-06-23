@@ -1,0 +1,30 @@
+# Database configuration (contains sensitive credentials)
+dbconnect.php
+
+# Vendor dependencies
+admin/vendor/
+
+# Composer files
+admin/composer.lock
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Upload directories (if any)
+img/uploads/
+vid/uploads/
+
+# Environment files
+.env
+.env.local
