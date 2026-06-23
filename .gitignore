@@ -21,7 +21,7 @@ Thumbs.db
 # Logs
 *.log
 
-# Upload directories (if any)
+# Upload directories
 img/uploads/
 vid/uploads/
 
