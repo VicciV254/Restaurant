@@ -22,8 +22,8 @@ Thumbs.db
 *.log
 
 # Upload directories
-img/uploads/
-vid/uploads/
+img/
+vid/
 
 # Environment files
 .env
